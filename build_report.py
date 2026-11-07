@@ -73,9 +73,21 @@ def main():
     parser.add_argument('--data',required=True,help='本期 report.json 路径')
     parser.add_argument('--output',help='输出 HTML 路径；默认保存到方案目录')
     parser.add_argument('--validate-only',action='store_true',help='只校验，不写任何输出文件')
+    parser.add_argument('--social',action='store_true',help='同时导出同目录 social.json 的竖版分享图')
+    parser.add_argument('--social-pages',type=int,choices=(2,3),default=3,help='分享图张数，默认 3 张')
+    parser.add_argument('--social-output-dir',help='分享图目录；默认 分享图/<周期>')
     args = parser.parse_args()
     try:
-        print(dump_json(build(args.data,args.output,args.validate_only)))
+        if args.social:
+            from build_social import load_social, build_social
+            social_path=Path(args.data).resolve().with_name('social.json')
+            social_data,_=load_social(social_path)
+            if (social_path.parent/social_data['source_report']).resolve()!=Path(args.data).resolve():
+                raise ReportError('social.json 引用的源周报不是本次生成的 report.json')
+        result=build(args.data,args.output,args.validate_only)
+        if args.social:
+            result['social']=build_social(social_path,args.social_output_dir,args.social_pages,validate_only=args.validate_only)
+        print(dump_json(result))
     except (ReportError, OSError, ValueError, KeyError, TypeError) as exc:
         print(f'生成未完成：{exc}',file=sys.stderr)
         return 1

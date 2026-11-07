@@ -1,0 +1,132 @@
+{
+ "schema_version": 1,
+ "status": "ready",
+ "disclosure": "balanced",
+ "source_report": "report.json",
+ "source_report_sha256": "ef39f939e5831b07c349b5e8187039a0e39530d3327cffc4f4cc6723caf5a4ed",
+ "period": {
+  "start": "2026-01-05",
+  "end": "2026-01-11"
+ },
+ "series": "工作周记",
+ "identity": "示例 · 虚构数据",
+ "cover": {
+  "title": [
+   "这一周，",
+   "把问题收敛。"
+  ],
+  "subtitle": "示例图：字段怎么填、三种卡片长什么样",
+  "takeaway": "先定位，再动手。",
+  "highlights": [
+   {
+    "icon": "check",
+    "label": "回归用例",
+    "value": "72",
+    "unit": "条",
+    "note": "全部通过",
+    "references": [
+     "output:output-validate"
+    ]
+   },
+   {
+    "icon": "chart",
+    "label": "报表口径",
+    "value": "2",
+    "unit": "处",
+    "note": "修正后重出",
+    "references": [
+     "output:output-report-fix"
+    ]
+   },
+   {
+    "icon": "code",
+    "label": "构建恢复",
+    "value": "已锁定",
+    "unit": "",
+    "note": "定位到依赖冲突",
+    "references": [
+     "output:output-infra-lock"
+    ]
+   }
+  ]
+ },
+ "achievements": {
+  "title": [
+   "进展，",
+   "要看得见。"
+  ],
+  "subtitle": "三张卡各演示一种类型。",
+  "cards": [
+   {
+    "type": "comparison",
+    "title": "流水线校验扩充",
+    "before": 48,
+    "after": 72,
+    "unit": "条",
+    "before_label": "期初",
+    "after_label": "期末",
+    "delta_label": "条用例",
+    "note": "本期回归：全部通过",
+    "references": [
+     "output:output-validate"
+    ]
+   },
+   {
+    "type": "release",
+    "title": "报表口径修正",
+    "value": "2 处",
+    "note": "重出上月报表\n补一页环比",
+    "references": [
+     "output:output-report-fix"
+    ]
+   },
+   {
+    "type": "gallery",
+    "title": "文档归档与索引",
+    "count": 3,
+    "unit": "篇已归档",
+    "secondary_count": 2,
+    "secondary_unit": "篇待补记录",
+    "references": [
+     "workstream:docs"
+    ]
+   }
+  ]
+ },
+ "review": {
+  "title": [
+   "这一周，",
+   "记住两件事。"
+  ],
+  "subtitle": "两个小提醒，留给下一周的自己。",
+  "lessons": [
+   {
+    "icon": "test",
+    "title": "别让一条坏数据卡住全批",
+    "text": "校验失败的记录单独落盘，其余继续跑。",
+    "references": [
+     "lesson:1"
+    ]
+   },
+   {
+    "icon": "verify",
+    "title": "把依赖版本钉住",
+    "text": "次版本自动升级也会引入不兼容改动。",
+    "references": [
+     "lesson:2"
+    ]
+   }
+  ],
+  "takeaway": "先定位，再动手。",
+  "closing": "把这两件事，带到下一周。"
+ },
+ "caption": {
+  "title": "示例文案：这一周的工作记录",
+  "body": "这是随仓库附带的虚构示例，用来演示 social.json 的字段怎么填，不是任何人的真实记录。\n\n本期示例内容：流水线的回归用例从 48 条增加到 72 条；报表修正了两处口径问题并重出；构建失败定位到依赖版本冲突，锁定后恢复。\n\n两个提醒：校验失败的记录单独落盘而不是整批中断；依赖版本要钉住。\n\n换成你自己的数据时，把这段文案一并重写。",
+  "hashtags": [
+   "工作周记",
+   "效率工具",
+   "每周复盘"
+  ]
+ }
+}

@@ -57,6 +57,31 @@ python build_report.py --data "data/20260105-20260111/report.json"
 
 把 `CLAUDE.md` 放在方案目录下，Claude Code 会自动读取其中的工作约定，直接说「做这一周的图解周报」即可。
 
+## 配套的竖版分享图
+
+周报之外还能导出 2–3 张 1200×1600（3:4）的竖版图片，适合发社交平台。封面放一句主标题和三个关键数字，成果页三张卡（前后对比 / 版本交付 / 数量产出各一种），复盘页三条短提醒。
+
+<p align="center">
+  <img src="分享图/20260105-20260111/01_封面.png" width="32%">
+  <img src="分享图/20260105-20260111/02_成果.png" width="32%">
+  <img src="分享图/20260105-20260111/03_复盘.png" width="32%">
+</p>
+
+```bash
+# 从已核对的 report.json 准备分享稿草稿
+python build_social.py --prepare "data/20260105-20260111/report.json"
+
+# 填好 data/<周期>/social.json 并设 status: ready 后导出
+python build_social.py --data "data/20260105-20260111/social.json" --pages 3
+
+# 或与周报一起生成
+python build_report.py --data "data/20260105-20260111/report.json" --social
+```
+
+分享稿是**独立于周报的一份精选**，不自动搬运周报全文。每条成果和复盘都要用 `references` 指回 `output:` / `workstream:` / `lesson:` 的真实来源，程序会校验引用存在、字段长度、页面溢出，并拦截内网地址与路径。详见 `社交分享说明.md`。
+
+上面三张是随包的虚构示例，页脚标着「示例 · 虚构数据」。导图需要本机 Chrome/Edge 或 Playwright 的 chromium。
+
 ## 包里有什么
 
 | 文件 | 作用 |
@@ -68,7 +93,10 @@ python build_report.py --data "data/20260105-20260111/report.json"
 | `report_theme.css` / `report_interactions.js` | 外观与交互 |
 | `report_model.py` | 数据校验与指标计算 |
 | `tests/` | 11 个单元测试 + 浏览器验收脚本 |
-| `data/20260105-20260111/` | **虚构的格式示例**，照着改成你自己的 |
+| `build_social.py` / `social_layout.py` / `social_theme.css` | 竖版分享图的生成与样式 |
+| `社交分享说明.md` / `social.schema.json` | 分享稿的填写规范与校验规则 |
+| `data/20260105-20260111/` | **虚构的格式示例**（`report.json` + `social.json`），照着改成你自己的 |
+| `分享图/20260105-20260111/` | 用上面示例数据导出的三张分享图 |
 | `周报_20260105-20260111.html` | 用上面示例数据生成的效果预览 |
 | `预览/` | 三个视口的验收截图 |
 
