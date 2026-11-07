@@ -1,0 +1,24 @@
+# 真实周报数据与成品：含你自己的工作内容，不要提交
+/data/*
+!/data/20260105-20260111/
+/周报_*.html
+/周报_*.md
+/周报_*.manifest.json
+!/周报_20260105-20260111.html
+!/周报_20260105-20260111.md
+/验收/
+/备份_*/
+/原始参考/
+# 验收脚本的运行记录：含生成机器的绝对路径
+/预览/result.json
+
+# 本机配置：路径因人而异，改完不要提交回来
+/report_config.local.json
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.DS_Store
+Thumbs.db

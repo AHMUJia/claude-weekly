@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "status": "ready",
+  "period": {
+    "start": "2026-01-05",
+    "end": "2026-01-11",
+    "timezone": "Asia/Singapore",
+    "carry_in": "previous_turn"
+  },
+  "sources": {
+    "stats": "stats.json",
+    "worklog_dir": "D:\\示例项目\\worklog\\20260105-20260111",
+    "note": "本目录为虚构的格式示例，不是任何人的真实工作记录；数字仅用于演示各类图表的字段用法。"
+  },
+  "headline": "示例：清洗流水线接入校验后交付，报表口径对齐，文档与环境问题各收尾一件。",
+  "workstreams": [
+    {
+      "id": "pipeline",
+      "name": "数据清洗流水线",
+      "title": "接入校验并交付",
+      "icon": "code",
+      "session_keys": ["11111111-aaaa-4aaa-8aaa-111111111111"],
+      "summary": "示例：补齐字段校验，回归用例由 48 条增至 72 条，全部通过。",
+      "body": "这是示例文本，用来演示工作线正文的写法。\n\n**做了什么**：为清洗流水线补齐字段级校验，把原先散落在三个脚本里的判空逻辑收敛到一处；回归用例从 48 条增加到 72 条。\n\n**怎么验证的**：用样例文件跑完整流程，比对输出与基线；校验失败的记录单独落盘而不是整批中断。\n\n**写法提示**：正文支持 Markdown，建议写清做了什么、怎么验证的、还差什么。图上出现的每个指标，都应该能在对应工作线正文里找到来源。"
+    },
+    {
+      "id": "report",
+      "name": "月度报表",
+      "title": "统计口径对齐",
+      "icon": "data",
+      "session_keys": ["22222222-bbbb-4bbb-8bbb-222222222222"],
+      "summary": "示例：修正两处口径错误，重出上月报表。",
+      "body": "这是示例文本。\n\n修正两处导致数字失真的口径问题：一处是源表新增列导致读取错位，一处是明细表存在整行重复。修正后重出上月报表，并补了一页按工作日口径的环比。\n\n**写法提示**：涉及数字变化时，写清修正前后各是多少、为什么会错，比只写「已修复」有用。"
+    },
+    {
+      "id": "docs",
+      "name": "文档整理",
+      "title": "归档与索引",
+      "icon": "paper",
+      "session_keys": ["33333333-cccc-4ccc-8ccc-333333333333"],
+      "summary": "示例：整理历史文档并建立索引页。",
+      "body": "这是示例文本。\n\n把分散在多个目录的历史文档归并到统一结构，生成索引页，补齐缺失的变更记录。\n\n**写法提示**：没有量化指标的工作线也值得单独列出，但不要为了凑指标编数字。本期没有的图，在 pages 里省略即可。"
+    },
+    {
+      "id": "infra",
+      "name": "环境排查",
+      "title": "定位构建失败",
+      "icon": "verify",
+      "session_keys": ["44444444-dddd-4ddd-8ddd-444444444444"],
+      "summary": "示例：定位到依赖版本冲突，锁定版本后恢复。",
+      "body": "这是示例文本。\n\n构建间歇性失败，排查后定位到某依赖的次版本自动升级引入了不兼容改动，锁定版本后恢复。\n\n**写法提示**：排查类工作的价值在于结论，写清楚「是什么原因」而不是「排查了很久」。"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "output-validate",
+      "workstream": "pipeline",
+      "label": "字段校验接入",
+      "short": "48 → 72 条用例",
+      "description": "示例：字段级校验收敛到一处并接入流水线，回归用例由 48 条增至 72 条。",
+      "evidence": "session:11111111-aaaa-4aaa-8aaa-111111111111 / 01-08 15:15；产物：示例路径"
+    },
+    {
+      "id": "output-pipeline-ship",
+      "workstream": "pipeline",
+      "label": "流水线交付",
+      "short": "交付并留存记录",
+      "description": "示例：完成交付并留存验证记录。",
+      "evidence": "session:11111111-aaaa-4aaa-8aaa-111111111111 / 01-08 20:15；产物：示例路径"
+    },
+    {
+      "id": "output-report-fix",
+      "workstream": "report",
+      "label": "报表口径修正",
+      "short": "修 2 处失真",
+      "description": "示例：修正源表列错位与明细行重复两处问题，重出上月报表。",
+      "evidence": "session:22222222-bbbb-4bbb-8bbb-222222222222 / 01-09 14:15；产物：示例路径"
+    },
+    {
+      "id": "output-docs-index",
+      "workstream": "docs",
+      "label": "文档索引页",
+      "short": "统一归档结构",
+      "description": "示例：历史文档归并到统一结构并生成索引页。",
+      "evidence": "session:33333333-cccc-4ccc-8ccc-333333333333 / 01-10 11:15；产物：示例路径"
+    },
+    {
+      "id": "output-infra-lock",
+      "workstream": "infra",
+      "label": "依赖版本锁定",
+      "short": "构建恢复稳定",
+      "description": "示例：定位到依赖次版本自动升级引入的不兼容改动，锁定版本后构建恢复。",
+      "evidence": "session:44444444-dddd-4ddd-8ddd-444444444444 / 01-09 21:15；产物：示例路径"
+    }
+  ],
+  "decisions": [
+    {
+      "title": "示例：校验失败改为单条落盘，不整批中断",
+      "body": "**背景**：原先任一记录校验失败就中断整批处理。\n\n**结论**：改为失败记录单独落盘，其余继续。\n\n**推理**：整批中断会让一条脏数据阻塞全天的处理；单条落盘后既能继续产出，也保留了问题现场供复查。\n\n**写法提示**：决策条目建议写满背景、结论、推理三段，这是以后回看时最有价值的部分。"
+    },
+    {
+      "title": "示例：锁定依赖版本而非改用新接口",
+      "body": "**背景**：依赖的次版本自动升级引入不兼容改动。\n\n**结论**：先锁定版本恢复构建，不在本周跟进新接口。\n\n**推理**：构建中断影响面大，先止血；适配新接口需要完整回归，排到后续处理更稳妥。"
+    }
+  ],
+  "priorities": [
+    {
+      "level": "P0",
+      "label": "必须完成",
+      "items": [
+        {
+          "title": "示例：跟进落盘的失败记录",
+          "short": "本周新增 12 条",
+          "detail": "示例：对单独落盘的校验失败记录做归因，确认是数据源问题还是校验规则过严。"
+        }
+      ]
+    },
+    {
+      "level": "P1",
+      "label": "尽量完成",
+      "items": [
+        {
+          "title": "示例：适配依赖新接口",
+          "short": "需完整回归",
+          "detail": "示例：锁定版本只是止血，适配新接口后需要跑完整回归再放开。"
+        },
+        {
+          "title": "示例：补齐文档变更记录",
+          "short": "索引已建立",
+          "detail": "示例：索引页已建立，历史文档的变更记录仍有缺口。"
+        }
+      ]
+    }
+  ],
+  "reflection": "## 做得好的\n\n- 示例：校验逻辑收敛到一处之后，新增规则只需改一个地方，本周新增 24 条用例没有产生重复代码。\n- 示例：报表口径的两处错误是靠比对基线发现的，不是等人反馈。\n\n## 可以改进的\n\n- 示例：依赖版本没有锁定，导致构建间歇性失败了两天才被定位。\n- 示例：文档归档拖了较久才开始，索引建立后仍有变更记录缺口。\n\n## 本周提醒\n\n示例：反思部分建议写具体事实和影响，避免写成口号。这段文字支持 Markdown。",
+  "lessons": [
+    {
+      "before": "校验失败整批中断",
+      "after": "失败单条落盘"
+    },
+    {
+      "before": "依赖次版本自动升级",
+      "after": "锁定版本"
+    }
+  ],
+  "pages": {
+    "performance": {
+      "title": "示例：流水线回归用例",
+      "workstream": "pipeline",
+      "regression": {"before": 48, "after": 72, "passed": 72}
+    },
+    "pipeline": {
+      "title": "示例：交付流转状态",
+      "workstream": "pipeline",
+      "statuses": [
+        {"id": "done", "label": "已完成", "short": "已完成"},
+        {"id": "running", "label": "进行中", "short": "进行中"},
+        {"id": "blocked", "label": "待外部确认", "short": "待确认"}
+      ],
+      "rows": [
+        {"name": "字段校验", "note": "示例：收敛到一处", "status": "done", "result": "72 条用例"},
+        {"name": "样例回归", "note": "示例：比对基线", "status": "done", "result": "全部通过"},
+        {"name": "失败记录归因", "note": "示例：本周新增 12 条", "status": "running", "result": "进行中"},
+        {"name": "新接口适配", "note": "示例：需完整回归", "status": "blocked", "result": "待排期"}
+      ],
+      "next_action": "示例：下一步短句，点击进入计划页"
+    },
+    "results": {
+      "title": "示例：本期关键产出",
+      "widgets": [
+        {
+          "type": "flow",
+          "title": "示例：来源与产出",
+          "subtitle": "flow 适合「从 N 份输入得到几类产出」",
+          "workstream": "pipeline",
+          "source_count": 36,
+          "source_label": "样例文件",
+          "outputs": [
+            {"value": 24, "label": "新增用例"},
+            {"value": 12, "label": "落盘记录"}
+          ],
+          "finding": {"value": 3, "label": "定位到的问题类型"}
+        },
+        {
+          "type": "checks",
+          "title": "示例：校验结果",
+          "subtitle": "checks 适合「校验了多少、过了多少、错了多少」",
+          "workstream": "pipeline",
+          "source_count": 72,
+          "source_label": "回归用例",
+          "verified": 72,
+          "verified_label": "通过",
+          "errors": 0,
+          "error_label": "失败",
+          "note": "示例：真实测得的 0 可以保留，估计出来的不行"
+        },
+        {
+          "type": "tiles",
+          "title": "示例：交付概况",
+          "subtitle": "tiles 适合「一个主数 + 两三个副数」",
+          "workstream": "report",
+          "count": 2,
+          "unit": "份报表",
+          "secondary": [
+            {"value": 2, "label": "处口径修正"},
+            {"value": 1, "label": "页环比分析"}
+          ],
+          "dot_count": 4,
+          "dot_label": "示例：点阵表达小计数"
+        },
+        {
+          "type": "papers",
+          "title": "示例：文档处理",
+          "subtitle": "papers 适合「左右两组篇数对比」，别塞不同量纲的数",
+          "workstream": "docs",
+          "left_count": 3,
+          "left_label": "篇已归档",
+          "right_count": 2,
+          "right_label": "篇待补记录",
+          "online_title": "示例：在线产物",
+          "online_text": "示例：有在线产物时写在这里，没有就换别的图卡"
+        }
+      ]
+    }
+  },
+  "unassigned_sessions": []
+}

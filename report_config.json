@@ -1,0 +1,7 @@
+{
+  "claude_config_dir": "<你的 Claude 配置目录，例如 C:/Users/你的用户名/.claude>",
+  "worklog_root": "<上面那个目录>/worklog",
+  "collector": "<上面那个目录>/skills/claude-weekly-worklog/scripts/worklog_stats.py",
+  "timezone": "Asia/Singapore",
+  "collector_timezone": "+08:00"
+}
